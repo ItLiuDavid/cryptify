@@ -1,5 +1,6 @@
 import caesar
 import affine
+import vigenere
 
 def main():
     print ("welcome to cryptify, what would you like to do?")
@@ -21,23 +22,27 @@ def welcomeMessage():
             quit()
         
 def encryptionMethods():
-    print ("Caesar, Affine")
+    print ("Caesar, Affine, Vigenere")
     choice = input("Pick your encryption method: ")
     match choice:
         case "1":
             caesar.caesarEncrypt()
         case "2":
             affine.affineEncrypt()
+        case "3":
+            vigenere.vigenereEncrypt()
         
 
 def decryptionMethods():
-    print ("Caesar, Affine")
+    print ("Caesar, Affine, Vigenere")
     choice = input("Pick your Decryption method")
     match choice:
         case "1":
             caesar.caesarDecrypt()
         case "2":
             affine.affineDecrypt()
+        case "3":
+            vigenere.vigenereDecrypt()
 
 
 if __name__ == "__main__":
