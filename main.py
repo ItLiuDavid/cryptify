@@ -26,7 +26,10 @@ def encryptionMethods():
     choice = input("Pick your encryption method: ")
     match choice:
         case "1":
-            caesar.caesarEncrypt()
+            plaintext = input("Enter plaintext: ")
+            key = int(input("Enter key: "))
+            ciphertext = caesar.caesarEncrypt(plaintext, key)
+            print (ciphertext)
         case "2":
             affine.affineEncrypt()
         case "3":
@@ -38,7 +41,10 @@ def decryptionMethods():
     choice = input("Pick your Decryption method")
     match choice:
         case "1":
-            caesar.caesarDecrypt()
+            ciphertext = input("Enter ciphertext: ")
+            key = int(input("Enter key: "))
+            plaintext = caesar.caesarDecrypt(ciphertext, key)
+            print (plaintext)
         case "2":
             affine.affineDecrypt()
         case "3":

@@ -1,7 +1,4 @@
-def caesarEncrypt():
-    print("you are encrypting using caesar cipher")
-    plaintext = list(input("write the desired plaintext: "))
-    key = int(input("write the shift: "))
+def caesarEncrypt(plaintext, key):
     ciphertext = ""
     for char in plaintext:
         if char.islower(): 
@@ -12,13 +9,9 @@ def caesarEncrypt():
             ciphertext += chr(shift)
         else:
             ciphertext += char
-    print(ciphertext)
     return ciphertext
 
-def caesarDecrypt():
-    print("you are decrypting using caesar cipher")
-    ciphertext = list(input("write the acquired cipher: "))
-    key = int(input("write the shift: "))
+def caesarDecrypt(ciphertext, key):
     plaintext = ""
     for char in ciphertext:
         if char.islower(): 
@@ -26,8 +19,7 @@ def caesarDecrypt():
             plaintext += chr(shift)
         elif char.isupper():  
             shift = (ord(char) - 65 - key) % 26 + 65
-            plaintext += chr(shift)
+            plaintext += char
         else:
             plaintext += char
-    print(plaintext)
-    return ciphertext
+    return plaintext
