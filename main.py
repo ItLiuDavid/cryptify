@@ -26,12 +26,18 @@ def encryptionMethods():
     choice = input("Pick your encryption method: ")
     match choice:
         case "1":
+            print("you are encrypting using caesar cipher")
             plaintext = input("Enter plaintext: ")
             key = int(input("Enter key: "))
             ciphertext = caesar.caesarEncrypt(plaintext, key)
             print (ciphertext)
         case "2":
-            affine.affineEncrypt()
+            print("you are encrypting using affine cipher")
+            plaintext = input("write the desired plaintext: ")
+            a = int(input("write the multiplicative key a: "))
+            b = int(input("write the additive key b: "))
+            ciphertext = affine.affineEncrypt(plaintext, a, b)
+            print(ciphertext)
         case "3":
             vigenere.vigenereEncrypt()
         
@@ -41,12 +47,18 @@ def decryptionMethods():
     choice = input("Pick your Decryption method")
     match choice:
         case "1":
+            print("you are decrypting using affine cipher")
             ciphertext = input("Enter ciphertext: ")
             key = int(input("Enter key: "))
             plaintext = caesar.caesarDecrypt(ciphertext, key)
             print (plaintext)
         case "2":
-            affine.affineDecrypt()
+            print("You are decrypting using affine method")
+            ciphertext = input("write the acquired ciphertext: ")
+            a = int(input("write the multiplicative key a: "))
+            b = int(input("write the additive key b: "))
+            plaintext = affine.affineDecrypt(ciphertext, a, b)
+            print(plaintext)
         case "3":
             vigenere.vigenereDecrypt()
 

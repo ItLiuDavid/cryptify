@@ -1,14 +1,8 @@
 import math
-#In essence an affine cipher is a slightly more complicated caesar cipher
 
-def affineEncrypt():
-    print("you are encrypting using affine cipher")
-    plaintext = input("write the desired plaintext: ")
-    a = int(input("write the multiplicative key (a): "))
-    b = int(input("write the additive key (b): "))
-    if math.gcd(a,26)!=1: # necessary or else you can't decrypt the ciphertext. In essence it means that the function has to be invertible.
-        print("Multiplicative key 'a' is not coprime with 26, choose another.")
-        return affineEncrypt() 
+def affineEncrypt(plaintext, a, b):
+    if math.gcd(a, 26) != 1:
+        raise ValueError("Multiplicative key 'a' is not coprime with 26, choose another.")
     ciphertext = ""
     for char in plaintext:
         if char.islower():
@@ -21,20 +15,17 @@ def affineEncrypt():
             ciphertext += chr(shift)
         else:
             ciphertext += char
-    print(ciphertext)
     return ciphertext
 
-def modinv(a, m): # Extended Euclidean Algorithm for modular inverse.
+def modinv(a, m):
     for x in range(1, m):
         if (a * x) % m == 1:
             return x
     raise ValueError("No modular inverse exists for this key.")
 
-def affineDecrypt():
-    print("you are decrypting using affine cipher")
-    ciphertext = input("write the acquired cipher: ")
-    a = int(input("write the multiplicative key (a): "))
-    b = int(input("write the additive key (b): "))
+def affineDecrypt(ciphertext, a, b):
+    if math.gcd(a, 26) != 1:
+        raise ValueError("Multiplicative key 'a' is not coprime with 26, choose another.")
     a_inv = modinv(a, 26)
     plaintext = ""
     for char in ciphertext:
@@ -48,5 +39,4 @@ def affineDecrypt():
             plaintext += chr(shift)
         else:
             plaintext += char
-    print(plaintext)
     return plaintext
