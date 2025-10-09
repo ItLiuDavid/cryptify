@@ -39,7 +39,13 @@ def encryptionMethods():
             ciphertext = affine.affineEncrypt(plaintext, a, b)
             print(ciphertext)
         case "3":
-            vigenere.vigenereEncrypt()
+            print("you are encrypting using vigenere cipher")
+            plaintext = input("write the desired plaintext: ")
+            key = input("write the key: ")
+            ciphertext = vigenere.vigenereEncrypt(plaintext, key)
+            print(ciphertext)
+        
+
         
 
 def decryptionMethods():
@@ -60,7 +66,11 @@ def decryptionMethods():
             plaintext = affine.affineDecrypt(ciphertext, a, b)
             print(plaintext)
         case "3":
-            vigenere.vigenereDecrypt()
+            print("you are decrypting using vigenere cipher")
+            plaintext = input("write the acquired ciphertext: ")
+            key = input("write the acquired key: ")
+            plaintext = vigenere.vigenereDecrypt(plaintext, key)
+            print(plaintext)
 
 
 if __name__ == "__main__":
